@@ -6,20 +6,20 @@
   box-sizing: border-box;
 }
 
-*{
-	font-family: 'Open Sans', 'sans-serif', 'FontAwesome';
-    margin:0;
+* {
+  font-family: 'Open Sans', 'sans-serif', 'FontAwesome';
+  margin: 0;
 }
 
-body{
+body {
   background: rgb(52, 56, 61);
-  padding: 80px;
+  padding: 0;
 }
 
-h1{
-	color: rgb(255, 255, 255);
-	margin-left: 40px;
-	margin-bottom: 20px;
-	width: 200px;
-	text-align: center;
+h1 {
+  color: rgb(255, 255, 255);
+  margin-left: 40px;
+  margin-bottom: 20px;
+  width: 200px;
+  text-align: center;
 }
