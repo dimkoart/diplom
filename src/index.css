@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,500&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+*{
+	font-family: 'Open Sans', 'sans-serif', 'FontAwesome';
+    margin:0;
+}
+
+body{
+  background: rgb(52, 56, 61);
+  padding: 80px;
+}
+
+h1{
+	color: rgb(255, 255, 255);
+	margin-left: 40px;
+	margin-bottom: 20px;
+	width: 200px;
+	text-align: center;
+}
