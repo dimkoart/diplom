@@ -1,17 +1,17 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Login from "./component/login/Login";
-import Registration from "./component/registration/Registration";
+import { Navigate, Route, Routes } from 'react-router-dom'
+import Login from './pages/Login'
+import Registration from './pages/Registration'
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/registration" element={<Registration />} />
+        <Route path='/' element={<Navigate to='/login' replace />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/registration' element={<Registration />} />
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
