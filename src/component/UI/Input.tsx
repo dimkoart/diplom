@@ -1,27 +1,27 @@
-import React from "react";
-import styled from "styled-components";
-import colors from "../../constants/colors";
+import React from 'react'
+import styled from 'styled-components'
+import colors from '../../constants/colors'
 
 interface Props {
-  style?: object;
-  text?: string;
-  type?: string | undefined;
-  placeholder?: string | undefined;
+  style?: object
+  text?: string
+  type?: string | undefined
+  placeholder?: string | undefined
 }
 const Input = ({ style, text, ...props }: Props) => {
   return (
     <StyledInput style={style} {...props}>
       {text}
     </StyledInput>
-  );
-};
+  )
+}
 
 const StyledInput = styled.input`
   display: flex;
   width: 400px;
   height: 49.48px;
   padding-left: 25px;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -36,6 +36,6 @@ const StyledInput = styled.input`
     color: ${colors.placeHolder};
     font-size: 20px;
   }
-`;
+`
 
-export default Input;
+export default Input

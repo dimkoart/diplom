@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import colors from "../../constants/colors";
+import React from 'react'
+import styled from 'styled-components'
+import colors from '../../constants/colors'
 
 interface Props {
-  text?: string;
-  style?: object;
+  text?: string
+  style?: object
 }
 
 const Button = ({ text, style, ...props }: Props) => {
@@ -12,8 +12,8 @@ const Button = ({ text, style, ...props }: Props) => {
     <StyledButton style={style} {...props}>
       {text}
     </StyledButton>
-  );
-};
+  )
+}
 const StyledButton = styled.button`
   display: flex;
   justify-content: center;
@@ -21,11 +21,11 @@ const StyledButton = styled.button`
   height: 45px;
   width: 238px;
   margin-top: 43px;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
-  color: #080808;
+  color: ${colors.buttonText};
   background: ${colors.buttonLoginColor};
   border: 0;
   border-radius: 15px;
@@ -33,6 +33,6 @@ const StyledButton = styled.button`
   &:hover {
     background-color: ${colors.buttonLoginHoverColor};
   }
-`;
+`
 
-export default Button;
+export default Button
