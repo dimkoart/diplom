@@ -6,19 +6,30 @@ import Input from '../component/UI/Input'
 import Button from '../component/UI/Button'
 import colors from '../constants/colors'
 import Icon from '../component/UI/Icon'
+import {
+  Container,
+  Form,
+  Title,
+} from '../component/UI/Authentiction/AuthenticationComponents'
 
 const Registration = () => {
   const navigate = useNavigate()
   return (
     <Container>
-      <RegForm>
-        <Icon icon='tv' size={40} color='red' />
+      <Form>
+        <Icon icon='tv' size={40} color={colors.red} />
         <ButtonBack
           onClick={() => {
             navigate('/login')
           }}
         >
-          {<Icon icon='arrow-left2' size={20} color='#f8d145' />}
+          {
+            <Icon
+              icon='arrow-left2'
+              size={20}
+              color={colors.buttonLoginColor}
+            />
+          }
         </ButtonBack>
         <Title>Registration</Title>
         <Text text='Use o seu melhor email para entrar' />
@@ -42,52 +53,16 @@ const Registration = () => {
               style={{
                 marginTop: 5,
                 fontSize: 15,
-                color: 'purple',
+                color: colors.purple,
               }}
             />
           </Link>
         </HrefBlock>
         <Button text='Registartion' />
-      </RegForm>
+      </Form>
     </Container>
   )
 }
-const Container = styled.div`
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-size: cover;
-  background-image: linear-gradient(
-      180deg,
-      hsla(0, 0%, 0%, 0.7) 0%,
-      rgba(0, 0, 0, 0) 100%
-    ),
-    url('https://yastatic.net/s3/passport-auth-customs/customs/_/4vui26y6.jpg');
-`
-
-const RegForm = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-color: ${colors.loginForm};
-  border-radius: 16px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
-`
-
-const Title = styled.div`
-  color: ${colors.white};
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 36px;
-  font-weight: 500;
-`
 
 const ButtonBack = styled.button`
   position: relative;
@@ -100,11 +75,11 @@ const ButtonBack = styled.button`
   right: 220px;
   background-color: ${colors.loginForm};
   border-radius: 50%;
-  box-shadow: 0 4px 8px #020202;
+  box-shadow: 0 4px 8px ${colors.buttonShadow};
   border: 0;
   cursor: pointer;
   &:hover {
-    box-shadow: 2px 5px 25px -3px rgba(247, 243, 243, 0.25);
+    box-shadow: 2px 5px 25px -3px ${colors.buttonHoverShadow};
   }
 `
 
