@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { CSSProperties, FC, HTMLAttributes } from 'react'
 import styled from 'styled-components'
 import colors from '../../constants/colors'
 
-interface Props {
+interface ButtonProps {
   text?: string
-  style?: object
+  style?: CSSProperties
 }
 
-const Button = ({ text, style, ...props }: Props) => {
+const Button: FC<ButtonProps & HTMLAttributes<HTMLButtonElement>> = ({
+  text,
+  style,
+  ...props
+}: ButtonProps) => {
   return (
     <StyledButton style={style} {...props}>
       {text}

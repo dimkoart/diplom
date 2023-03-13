@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import Registration from './pages/Registration'
-
+import './App.css'
 function App() {
   return (
     <Routes>

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import colors from '../../../constants/colors'
+import colors from '../../constants/colors'
 
 export const Container = styled.div`
   position: fixed;
@@ -33,9 +33,14 @@ export const Form = styled.div`
 `
 
 export const Title = styled.div`
-  color: ${colors.white};
+  color: ${(props) => props.color || colors.white};
   margin-bottom: 20px;
   text-align: center;
   font-size: 36px;
   font-weight: 500;
+`
+export const ForgetPasswordBlock = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
 `

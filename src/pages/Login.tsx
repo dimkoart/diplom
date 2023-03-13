@@ -1,15 +1,14 @@
-import styled from 'styled-components'
-import Text from '../component/UI/Text'
+import { StyledText } from '../component/UI/Text'
 import Input from '../component/UI/Input'
 import Button from '../component/UI/Button'
 import { Link } from 'react-router-dom'
-import '../App.css'
 import Icon from '../component/UI/Icon'
 import {
   Container,
+  ForgetPasswordBlock,
   Form,
   Title,
-} from '../component/UI/Authentiction/AuthenticationComponents'
+} from '../styles/Authentification/AuthentificationComponents'
 import colors from '../constants/colors'
 
 const Login = () => {
@@ -18,36 +17,32 @@ const Login = () => {
       <Form>
         <Icon icon='tv' size={40} color={colors.red} />
         <Title>Sign In Form</Title>
-        <Text text='Use o seu melhor email para entrar' />
-        <Text text='Email' style={{ alignSelf: 'start', marginTop: 15 }} />
+        <StyledText alignSelf='start' marginTop={15}>
+          Email
+        </StyledText>
         <Input type='email' placeholder='Enter email' />
-        <Text text='Password' style={{ marginTop: 25, alignSelf: 'start' }} />
-        <Input type='password' placeholder='Enter Password' />
-        <HrefBlock>
-          <Text
-            text='No account, '
-            style={{ marginTop: 5, alignSelf: 'start', fontSize: 15 }}
-          />
-          <Link to='/registration' style={{ fontSize: 16 }}>
-            <Text
-              text=' click here '
-              style={{
-                marginTop: 5,
-                fontSize: 15,
-                color: colors.purple,
-              }}
-            />
+        <StyledText alignSelf='start' marginTop={25}>
+          Password
+        </StyledText>
+        <Input
+          type='password'
+          placeholder='Enter Password'
+          style={{ marginBottom: 10 }}
+        />
+        <ForgetPasswordBlock>
+          <StyledText marginTop={5} alignSelf='start' fontSize={15}>
+            No account,
+          </StyledText>
+          <Link to='/registration' style={{ fontSize: 16, textDecoration: 1 }}>
+            <StyledText marginTop={5} fontSize={15} color={colors.blue}>
+              click here
+            </StyledText>
           </Link>
-        </HrefBlock>
+        </ForgetPasswordBlock>
         <Button text='Sign In' />
       </Form>
     </Container>
   )
 }
 
-const HrefBlock = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-self: flex-start;
-`
 export default Login

@@ -1,19 +1,18 @@
-import React from 'react'
+import React, { CSSProperties, FC, HTMLAttributes } from 'react'
 import styled from 'styled-components'
 import colors from '../../constants/colors'
 
-interface Props {
-  style?: object
+interface InputProps {
+  style?: CSSProperties
   text?: string
   type?: string | undefined
   placeholder?: string | undefined
 }
-const Input = ({ style, text, ...props }: Props) => {
-  return (
-    <StyledInput style={style} {...props}>
-      {text}
-    </StyledInput>
-  )
+const Input: FC<InputProps & HTMLAttributes<HTMLInputElement>> = ({
+  style,
+  ...props
+}: InputProps) => {
+  return <StyledInput style={style} {...props}></StyledInput>
 }
 
 const StyledInput = styled.input`
