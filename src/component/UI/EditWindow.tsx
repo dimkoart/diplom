@@ -34,11 +34,11 @@ const EditWindow = ({ active, onClose }: Props) => {
         </CloseWIndow>
 
         <Title>Edit Form</Title>
-        <StyledText alignSelf={'start'} marginTop={5} fontSize={25}>
+        <StyledText style={{ marginTop: 5, alignSelf: 'start', fontSize: 25 }}>
           Name
         </StyledText>
         <Input type='text' placeholder='Enter Name' />
-        <StyledText alignSelf={'start'} marginTop={25} fontSize={25}>
+        <StyledText style={{ marginTop: 25, alignSelf: 'start', fontSize: 25 }}>
           Surname
         </StyledText>
         <Input
@@ -46,7 +46,7 @@ const EditWindow = ({ active, onClose }: Props) => {
           placeholder='Enter Surname'
           style={{ marginBottom: 10 }}
         />
-        <StyledText alignSelf={'start'} marginTop={25} fontSize={25}>
+        <StyledText style={{ marginTop: 25, alignSelf: 'start', fontSize: 25 }}>
           Write your password
         </StyledText>
         <Input
@@ -54,7 +54,7 @@ const EditWindow = ({ active, onClose }: Props) => {
           placeholder=' Write your password'
           style={{ marginBottom: 10 }}
         />
-        <StyledText alignSelf={'start'} marginTop={25} fontSize={25}>
+        <StyledText style={{ marginTop: 25, alignSelf: 'start', fontSize: 25 }}>
           New Password
         </StyledText>
         <Input

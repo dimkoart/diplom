@@ -17,11 +17,11 @@ const Login = () => {
       <Form>
         <Icon icon='tv' size={40} color={colors.red} />
         <Title>Sign In Form</Title>
-        <StyledText alignSelf='start' marginTop={15}>
+        <StyledText style={{ alignSelf: 'start', marginTop: 15 }}>
           Email
         </StyledText>
         <Input type='email' placeholder='Enter email' />
-        <StyledText alignSelf='start' marginTop={25}>
+        <StyledText style={{ alignSelf: 'start', marginTop: 25 }}>
           Password
         </StyledText>
         <Input
@@ -30,11 +30,15 @@ const Login = () => {
           style={{ marginBottom: 10 }}
         />
         <ForgetPasswordBlock>
-          <StyledText marginTop={5} alignSelf='start' fontSize={15}>
+          <StyledText
+            style={{ marginTop: 5, alignSelf: 'start', fontSize: 15 }}
+          >
             No account,
           </StyledText>
           <Link to='/registration' style={{ fontSize: 16, textDecoration: 1 }}>
-            <StyledText marginTop={5} fontSize={15} color={colors.blue}>
+            <StyledText
+              style={{ marginTop: 5, fontSize: 15, color: colors.blue }}
+            >
               click here
             </StyledText>
           </Link>

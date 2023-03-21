@@ -28,11 +28,11 @@ const Registration = () => {
         </ButtonBack>
         <Title>Registration</Title>
         <StyledText>Use o seu melhor email para entrar</StyledText>
-        <StyledText alignSelf='start' marginTop={15}>
+        <StyledText style={{ marginTop: 15, alignSelf: 'start' }}>
           Email
         </StyledText>
         <Input type='email' placeholder='Enter email' />
-        <StyledText marginTop={25} alignSelf='start'>
+        <StyledText style={{ marginTop: 25, alignSelf: 'start' }}>
           Password
         </StyledText>
         <Input type='password' placeholder='Enter Password' />
@@ -42,11 +42,15 @@ const Registration = () => {
           placeholder='Repeat Password'
         />
         <ForgetPasswordBlock>
-          <StyledText marginTop={5} alignSelf='start' fontSize={15}>
+          <StyledText
+            style={{ marginTop: 5, alignSelf: 'start', fontSize: 15 }}
+          >
             Already have an account,
           </StyledText>
           <Link to='/login' style={{ fontSize: 16, textDecoration: 1 }}>
-            <StyledText marginTop={5} fontSize={15} color={colors.blue}>
+            <StyledText
+              style={{ marginTop: 5, fontSize: 15, color: colors.blue }}
+            >
               click here
             </StyledText>
           </Link>

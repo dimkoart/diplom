@@ -86,14 +86,16 @@ const UserPage = () => {
           </Image>
           <UserInfo>
             <StyledText
-              fontSize={32}
-              fontWeight={900}
-              marginTop={25}
-              marginLeft={20}
+              style={{
+                marginTop: 25,
+                fontSize: 32,
+                fontWeight: 500,
+                marginLeft: 20,
+              }}
             >
               Dzmitry Samaseika
             </StyledText>
-            <StyledText fontSize={15} marginTop={25} marginLeft={20}>
+            <StyledText style={{ marginTop: 25, fontSize: 15, marginLeft: 20 }}>
               Registration date: 30 January 2023
             </StyledText>
           </UserInfo>
