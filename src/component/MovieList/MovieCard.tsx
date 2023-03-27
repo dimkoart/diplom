@@ -6,18 +6,21 @@ interface Props {
   film: Film
 }
 
-const Card: FC<Props & HTMLAttributes<HTMLDivElement>> = ({ film }: Props) => {
+const FilmCard: FC<Props & HTMLAttributes<HTMLDivElement>> = ({
+  film,
+  ...props
+}) => {
   return (
-    <FilmCard {...film}>
+    <Card {...props}>
       <img style={{ borderRadius: 15 }} src={film.posterUrl} />
-    </FilmCard>
+    </Card>
   )
 }
-const FilmCard = styled.div`
+const Card = styled.div`
   display: flex;
   margin-top: 10px;
   margin-left: 15px;
-  width: 170px;
+  width: 169px;
   height: 250px;
   border-radius: 10px;
   background-color: ${colors.loginForm};
@@ -30,5 +33,15 @@ const FilmCard = styled.div`
   &:hover {
     transform: scale(1.1);
   }
+  animation: 3s show ease;
+  @keyframes show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  transition: 0.3s;
 `
-export default Card
+export default FilmCard

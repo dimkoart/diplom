@@ -11,7 +11,7 @@ interface InputProps {
 const Input: FC<InputProps & HTMLAttributes<HTMLInputElement>> = ({
   style,
   ...props
-}: InputProps) => {
+}) => {
   return <StyledInput style={style} {...props}></StyledInput>
 }
 

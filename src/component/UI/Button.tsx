@@ -11,7 +11,7 @@ const Button: FC<ButtonProps & HTMLAttributes<HTMLButtonElement>> = ({
   text,
   style,
   ...props
-}: ButtonProps) => {
+}) => {
   return (
     <StyledButton style={style} {...props}>
       {text}

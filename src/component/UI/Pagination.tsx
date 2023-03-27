@@ -10,7 +10,7 @@ interface Props {
   getPage: () => number
   filmsCount: Films
 }
-const Pagination: FC<Props> = ({ changePage, filmsCount, getPage }: Props) => {
+const Pagination: FC<Props> = ({ changePage, filmsCount, getPage }) => {
   const pageNumbers: number[] = []
   const currPage = getPage()
 

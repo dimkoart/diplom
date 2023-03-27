@@ -10,8 +10,9 @@ import {
   Title,
 } from '../styles/Authentification/AuthentificationComponents'
 import colors from '../constants/colors'
+import { FC } from 'react'
 
-const Login = () => {
+const Login: FC = () => {
   return (
     <Container>
       <Form>

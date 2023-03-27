@@ -12,7 +12,7 @@ const Icon: FC<Props & HTMLAttributes<HTMLDivElement>> = ({
   color,
   size,
   style,
-}: Props) => {
+}) => {
   return (
     <IcoMoon
       style={style}

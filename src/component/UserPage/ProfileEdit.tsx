@@ -1,20 +1,20 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import colors from '../../constants/colors'
-import Button from './Button'
-import Input from './Input'
-import { StyledText } from './Text'
-import Icon from './Icon'
+import Button from '../UI/Button'
+import Input from '../UI/Input'
+import { StyledText } from '../UI/Text'
+import Icon from '../UI/Icon'
 interface Props {
   active: boolean
   onClose: () => void
 }
-const EditWindow = ({ active, onClose }: Props) => {
+const EditWindow: FC<Props> = ({ active, onClose }) => {
   if (!active) {
     return null
   }
   return (
-    <Blure
+    <Blur
       onClick={() => {
         onClose()
       }}
@@ -67,7 +67,7 @@ const EditWindow = ({ active, onClose }: Props) => {
           style={{ width: 150, height: 50, marginTop: 15, fontWeight: 900 }}
         />
       </Form>
-    </Blure>
+    </Blur>
   )
 }
 const Form = styled.div`
@@ -79,9 +79,18 @@ const Form = styled.div`
   padding: 20px;
   background-color: ${colors.loginForm};
   border-radius: 16px;
-  box-shadow: 2px 5px 25px -3px white;
+  box-shadow: 2px 5px 25px -3px black;
+  animation: 0.5s show ease;
+  @keyframes show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `
-const Blure = styled.div`
+const Blur = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

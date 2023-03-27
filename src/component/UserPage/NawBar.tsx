@@ -1,43 +1,51 @@
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../constants/colors'
 interface Props {
   setTab: (value: number) => void
   getTab: () => number
 }
-const TabsComponent: FC<Props> = ({ setTab, getTab }: Props) => {
+const NawBar: FC<Props> = ({ setTab, getTab }: Props) => {
   const currTab = getTab()
   const tabs = [
     {
       value: 'Favorites',
       number: 1,
+      link: 'favorites',
     },
     {
       value: 'Viewed',
       number: 2,
+      link: 'viewed',
     },
     {
       value: 'Watch later',
       number: 3,
+      link: 'watchLater',
     },
   ]
 
   return (
     <TabsContainer>
       {tabs.map((tab) => (
-        <Tab
-          style={{
-            boxShadow: `2px 5px 5px -3px ${
-              currTab == tab.number ? `white` : colors.textShadow
-            }`,
-          }}
-          key={tab.value}
-          onClick={() => {
-            setTab(tab.number)
-          }}
-        >
-          {tab.value}
-        </Tab>
+        <Link to={tab.link} style={{ textDecoration: 'none' }} key={tab.value}>
+          <Tab
+            style={{
+              backgroundColor: `${
+                currTab == tab.number
+                  ? colors.buttonLoginColor
+                  : colors.tabsBackColor
+              }`,
+              color: `${currTab == tab.number ? colors.black : colors.white}`,
+            }}
+            onClick={() => {
+              setTab(tab.number)
+            }}
+          >
+            {tab.value}
+          </Tab>
+        </Link>
       ))}
     </TabsContainer>
   )
@@ -64,4 +72,4 @@ const Tab = styled.div`
   cursor: pointer;
 `
 
-export default TabsComponent
+export default NawBar
