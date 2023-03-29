@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom'
 import Favorites from './Favorites'
 import Viewed from './Viewed'
 import WatchLater from './WatchLater'
+import Header from '../../component/header/Header'
 
 const UserPage: FC = () => {
   const [nawBarState, setNawBar] = useState(1)
@@ -20,6 +21,7 @@ const UserPage: FC = () => {
 
   return (
     <Container id='Container'>
+      <Header />
       <UserContent>
         <UserCard />
         <FilmList>
@@ -59,7 +61,7 @@ const Container = styled.div`
   align-items: start;
   overflow: scroll;
   overflow-x: hidden;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   left: 0;
   top: 0;

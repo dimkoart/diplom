@@ -45,7 +45,7 @@ const UserCard: FC = () => {
       </UserInfo>
       <Button
         text='Edit'
-        style={{ marginLeft: 150, marginTop: 17, width: 75 }}
+        style={{ marginLeft: 150, marginTop: 17, width: 75, border: 0 }}
         onClick={() => {
           setModal(true)
         }}
@@ -56,7 +56,7 @@ const UserCard: FC = () => {
 }
 const Header = styled.div`
   display: flex;
-  margin-top: 25px;
+  margin-top: 50px;
   padding: 20px;
   background-color: ${colors.loginForm};
   border-radius: 16px;

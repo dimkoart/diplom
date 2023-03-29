@@ -13,6 +13,7 @@ const FilmList: FC<Props & HTMLAttributes<HTMLDivElement>> = ({
   fetchMoreData,
   ...props
 }) => {
+  console.log('listgovna')
   return (
     <Films {...props}>
       <InfiniteScroll
