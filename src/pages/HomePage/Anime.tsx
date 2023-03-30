@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import colors from '../../constants/colors'
 
 const Anime = () => {
-  return <AnimeList>Anime</AnimeList>
+  return <AnimeList style={{ color: 'white' }}>Anime</AnimeList>
 }
 const AnimeList = styled.div`
   display: inline-flex;

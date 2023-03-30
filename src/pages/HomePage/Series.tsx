@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import colors from '../../constants/colors'
 
 const Series = () => {
-  return <SeriesList>Series</SeriesList>
+  return <SeriesList style={{ color: 'white' }}>Series</SeriesList>
 }
 const SeriesList = styled.div`
   display: inline-flex;
