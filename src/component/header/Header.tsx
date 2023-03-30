@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import colors from '../../constants/colors'
 import Icon from '../UI/Icon'
 import { StyledText } from '../UI/Text'
-
-const Header = () => {
+import DropDown from './DropDown'
+interface Props {
+  active: string
+}
+const Header: FC<Props> = ({ active }) => {
   const [scrollDirection, setScrollDirection] = useState(0)
-  let lastScrollY: any = null
-  let scrollY: any = null
+  const [open, setOpen] = useState(false)
+  const menuRef = useRef(null)
+  let lastScrollY = 0
+  let scrollY = 0
 
   useEffect(() => {
     const container = document.getElementById('Container')
@@ -28,15 +33,20 @@ const Header = () => {
       lastScrollY = scrollY > 0 ? scrollY : 0
     }
     if (container != null) {
-      container.addEventListener('scroll', updateScrollDirection) // add event listener
+      container.addEventListener('scroll', updateScrollDirection)
     }
     return () => {
       if (container != null) {
-        container.removeEventListener('scroll', updateScrollDirection) // clean up
+        container.removeEventListener('scroll', updateScrollDirection)
       }
     }
   }, [scrollDirection])
-
+  window.addEventListener('click', (e) => {
+    console.log(e.target === menuRef.current)
+    if (e.target != menuRef.current) {
+      setOpen(false)
+    }
+  })
   return (
     <HeaderContainer style={{ top: scrollDirection }}>
       <Logo>
@@ -57,35 +67,42 @@ const Header = () => {
       </Logo>
       <NavBar>
         <Item>
-          <Links href='#' style={{ color: 'yellow' }}>
+          <Links
+            href='/home'
+            style={{ color: active === 'home' ? colors.yellow : colors.white }}
+          >
             Home
           </Links>
         </Item>
         <Item>
-          <Links href='#'>Profile</Links>
+          <Links
+            href='/userPage'
+            style={{
+              color: active === 'userPage' ? colors.yellow : colors.white,
+            }}
+          >
+            Profile
+          </Links>
         </Item>
         <Item>
-          <Links href='#'>Home</Links>
-        </Item>
-        <Item>
-          <Links href='#'>Home</Links>
-        </Item>
-        <Item>
-          <Links href='#'>About</Links>
+          <Links
+            href='#'
+            style={{ color: active === 'about' ? colors.yellow : colors.white }}
+          >
+            About
+          </Links>
         </Item>
       </NavBar>
-      <Main>
-        <Icon
-          icon='menu'
-          size={30}
-          color={colors.gray}
-          style={{ zIndex: 1000, marginLeft: 35, cursor: 'pointer' }}
-        />
-
+      <Main
+        onClick={() => {
+          setOpen(!open)
+        }}
+      >
         <StyledText style={{ fontSize: 20, fontWeight: 500, marginRight: 10 }}>
           Dima
         </StyledText>
         <img
+          ref={menuRef}
           src='https://lastfm.freetls.fastly.net/i/u/770x0/184fc92686e96c0f0b63e426c233bd59.jpg'
           style={{
             borderRadius: 90,
@@ -93,21 +110,21 @@ const Header = () => {
             cursor: 'pointer',
           }}
         />
+        {open && <DropDown />}
       </Main>
     </HeaderContainer>
   )
 }
 
 const HeaderContainer = styled.div`
-  position: fixed;
-  top: 0;
-
-  width: 100%;
-  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 15px 12%;
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.6),
@@ -127,17 +144,12 @@ const HeaderContainer = styled.div`
     rgba(0, 0, 0, 0.005) 93.33%,
     transparent
   );
-  padding: 15px 12%;
-
   transition: all 0.5s ease;
-  @media (max-width: 1280px) {
-    padding: 15px 2%;
-    transition: 0.2s;
-  }
 `
 
 const Main = styled.div`
   display: flex;
+  position: relative;
   align-items: center;
   margin-right: 40px;
 `
@@ -149,24 +161,15 @@ const Logo = styled.div`
 `
 const NavBar = styled.div`
   display: flex;
-  &:hover {
-    color: green;
-  }
-  :active {
-    color: yellow;
-  }
 `
 const Links = styled.a`
-  color: white;
   font-size: 20px;
   padding: 5px 0px;
   margin: 0px 30px;
   font-weight: 500;
+  color: ${colors.white};
   transition: all 0.5s ease;
   text-decoration: none;
-  &:hover {
-    color: yellow;
-  }
   @media (max-width: 1280px) {
     padding: 5px 0;
     margin: 0px 20px;
@@ -175,4 +178,5 @@ const Links = styled.a`
 const Item = styled.li`
   list-style-type: none;
 `
+
 export default Header
