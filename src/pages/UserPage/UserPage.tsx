@@ -21,7 +21,7 @@ const UserPage: FC = () => {
 
   return (
     <Container id='Container'>
-      <Header active={'userPage'} />
+      <Header />
       <UserContent>
         <UserCard />
         <FilmList>
