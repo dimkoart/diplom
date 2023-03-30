@@ -12,7 +12,7 @@ const FilmCard: FC<Props & HTMLAttributes<HTMLDivElement>> = ({
 }) => {
   return (
     <Card {...props}>
-      <img style={{ borderRadius: 15 }} src={film.posterUrl} />
+      <img style={{ borderRadius: 5 }} src={film.posterUrl} />
     </Card>
   )
 }
@@ -22,16 +22,16 @@ const Card = styled.div`
   margin-left: 15px;
   width: 169px;
   height: 250px;
-  border-radius: 10px;
+  border-radius: 4px;
   background-color: ${colors.loginForm};
   border-radius: 16px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;
   cursor: pointer;
   &:hover {
     transform: scale(1.1);
+    box-shadow: 0px 0px 100px ${colors.black};
   }
   animation: 3s show ease;
   @keyframes show {

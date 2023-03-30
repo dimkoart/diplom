@@ -5,6 +5,7 @@ const colors = {
   purple: '#770085',
   black: '#000000',
   blue: '#56a8fc',
+  yellow: '#ffff00',
   buttonShadow: '#020202',
   buttonHoverShadow: '#f7f3f33f',
   textColors: '#f8f8ff',
@@ -22,6 +23,15 @@ const colors = {
   disabledButton: '#9e9a8b',
   paginationButtonColor: '#e6e6e6',
   tabsBackColor: '#1d1c1c',
+  reviewRed: '#ffebeb',
+  reviewGreen: '#ebf7eb',
+  posterBackGround: '#0f0f12',
+  posterButton: '#bebebe',
+  scrollBar: '#2d2d2e',
+  scrollThumb: '#221d1d',
+  iconSwiper: '#383838',
+  reviewNegative: '#ffc0cb',
+  reviewpositive: '#ebf7eb',
 }
 
 export default colors
