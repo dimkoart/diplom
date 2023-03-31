@@ -1,4 +1,5 @@
 import React, { FC, HTMLAttributes } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../constants/colors'
 import { Film } from '../../types/FilmsType'
@@ -11,9 +12,11 @@ const FilmCard: FC<Props & HTMLAttributes<HTMLDivElement>> = ({
   ...props
 }) => {
   return (
-    <Card {...props}>
-      <img style={{ borderRadius: 5 }} src={film.posterUrl} />
-    </Card>
+    <Link to={`/filmPage/${film.filmId}`}>
+      <Card {...props} style={{ textDecoration: 'none' }}>
+        <img style={{ borderRadius: 5 }} src={film.posterUrl} />
+      </Card>
+    </Link>
   )
 }
 const Card = styled.div`

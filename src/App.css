@@ -15,7 +15,18 @@
     font-weight: 500;
     font-style: normal;
 }
+@font-face {
+    font-family:'Century Gothic';
+    src: url('./fonts/centurygothic.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family:'Century Medium';
+    src: url('./fonts/centurygothic_bold.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
 body{
-    font-family: 'Poppins';
+    font-family: 'Century Gothic';
   
 }

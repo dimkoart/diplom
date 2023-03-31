@@ -11,6 +11,7 @@ import Films from './Films'
 import Series from './Series'
 import Anime from './Anime'
 import SortedBlock from '../../component/HomePage/SortedBlock'
+import React from 'react'
 const HomePage = () => {
   const [films, setFilms] = useState<Film[]>([])
 

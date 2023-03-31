@@ -5,6 +5,7 @@ export interface IRatingProps {
   activeColor?: string
   count?: number
   size?: number
+  value?: number
   onChange?: (newRating: number) => void
 }
 
@@ -12,7 +13,7 @@ const RatingComponent: FC<IRatingProps> = ({
   activeColor,
   count,
   size,
-
+  value,
   onChange,
 }) => {
   return (
@@ -20,6 +21,7 @@ const RatingComponent: FC<IRatingProps> = ({
       activeColor={activeColor}
       count={count}
       size={size}
+      value={value}
       onChange={onChange}
     />
   )

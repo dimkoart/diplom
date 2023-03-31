@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../constants/colors'
 import { Film } from '../../types/FilmsType'
@@ -22,13 +23,17 @@ const Poster: FC<Props> = ({ films }) => {
   return (
     <PosterContainer>
       <Content style={{}}>
-        <Image>
-          <img src={films.posterUrl} />
-        </Image>
+        <Link
+          to={`/filmPage/${films.filmId}`}
+          style={{ textDecoration: 'none' }}
+        >
+          <Image>
+            <img src={films.posterUrl} />
+          </Image>
+        </Link>
         <Video>
           <video
             src={require('../../video/trailer_4984.mp4')}
-            muted
             controls
             style={{ width: 300 }}
           ></video>
@@ -46,15 +51,20 @@ const Poster: FC<Props> = ({ films }) => {
         </StyledText>
       </Content>
       <Content style={{ marginTop: 20, marginLeft: 70 }}>
-        <StyledText
-          style={{
-            fontWeight: 900,
-            fontSize: 50,
-            marginTop: 20,
-          }}
+        <Link
+          to={`/filmPage/${films.filmId}`}
+          style={{ textDecoration: 'none' }}
         >
-          {films.nameEn}
-        </StyledText>
+          <StyledText
+            style={{
+              fontWeight: 900,
+              fontSize: 50,
+              marginTop: 20,
+            }}
+          >
+            {films.nameEn}
+          </StyledText>
+        </Link>
         <StyledText
           style={{
             marginTop: 20,
@@ -160,7 +170,6 @@ const Image = styled.div`
   width: 300px;
   height: 450px;
   border-radius: 16px;
-
   box-shadow: 2px 5px 25px -3px ${colors.textShadow};
   background-size: cover;
   background-repeat: no-repeat;

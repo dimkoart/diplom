@@ -22,3 +22,17 @@ export type Comment = {
   title: string
   description: string
 }
+
+export type FilmId = {
+  kinopoiskId: number
+  posterUrl: string
+  ratingKinopoisk: number
+  ratingKinopoiskVoteCount: number
+  nameOriginal: string
+  description: string
+  genres: [{ genre: string }]
+}
+export type Cast = {
+  nameEn: string
+  posterUrl: string
+}

@@ -50,4 +50,28 @@ export class FilmService {
       )
     ).data
   }
+  static async fetchFilmId(id: number) {
+    return (
+      await axios.get(
+        `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`,
+        {
+          headers: {
+            'X-API-KEY': '58288e48-fd39-4e9c-98f1-f8c9d79b8e83',
+          },
+        }
+      )
+    ).data
+  }
+  static async fetchCast(id: number) {
+    return (
+      await axios.get(
+        `https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=${id}`,
+        {
+          headers: {
+            'X-API-KEY': '58288e48-fd39-4e9c-98f1-f8c9d79b8e83',
+          },
+        }
+      )
+    ).data
+  }
 }

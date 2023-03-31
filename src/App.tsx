@@ -17,7 +17,7 @@ function App() {
       <Route path='/home/' element={<Navigate to='/home/films' replace />} />
       <Route path='/registration' element={<Registration />} />
       <Route path='/userPage/*' element={<UserPage />} />
-      <Route path='/filmPage' element={<FilmsPage />} />
+      <Route path='/filmPage/:id' element={<FilmsPage />} />
       <Route
         path='/userPage/'
         element={<Navigate to='/userPage/favorites' replace />}

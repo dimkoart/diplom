@@ -19,15 +19,17 @@ const DropDown = () => {
           Page
         </StyledText>
       </Link>
-      <StyledText style={{ textDecoration: 'underline', cursor: 'pointer' }}>
-        <Icon
-          icon='switch'
-          size={20}
-          color={colors.white}
-          style={{ cursor: 'pointer', marginRight: 5 }}
-        />
-        LogOut
-      </StyledText>
+      <Link to='/login' style={{ textDecoration: 'none' }}>
+        <StyledText style={{ textDecoration: 'underline', cursor: 'pointer' }}>
+          <Icon
+            icon='switch'
+            size={20}
+            color={colors.white}
+            style={{ cursor: 'pointer', marginRight: 5 }}
+          />
+          LogOut
+        </StyledText>
+      </Link>
     </DropDownStyled>
   )
 }

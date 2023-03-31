@@ -11,6 +11,7 @@ const UserCard: FC = () => {
   const closeModal = (): void => {
     setModal(false)
   }
+
   return (
     <Header>
       <Image>
@@ -50,6 +51,7 @@ const UserCard: FC = () => {
           setModal(true)
         }}
       />
+
       <ProfileEdit active={modal} onClose={closeModal} />
     </Header>
   )

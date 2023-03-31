@@ -8,7 +8,7 @@ export const StyledText = styled.text`
   align-self: auto;
   margin-left: 5px;
   margin-top: 5px;
-  font-family: 'Poppins';
+  font-family: 'Century Gothic';
   font-style: normal;
   font-size: 20px;
   font-weight: 400;
