@@ -2,35 +2,20 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../constants/colors'
+import { Tab } from '../../types/NavBar'
 interface Props {
   setTab: (value: number) => void
   getTab: () => number
+  tabs: Tab[]
 }
-const NawBar: FC<Props> = ({ setTab, getTab }: Props) => {
+const NawBar: FC<Props> = ({ setTab, getTab, tabs }: Props) => {
   const currTab = getTab()
-  const tabs = [
-    {
-      value: 'Favorites',
-      number: 1,
-      link: 'favorites',
-    },
-    {
-      value: 'Viewed',
-      number: 2,
-      link: 'viewed',
-    },
-    {
-      value: 'Watch later',
-      number: 3,
-      link: 'watchLater',
-    },
-  ]
 
   return (
     <TabsContainer>
       {tabs.map((tab) => (
         <Link to={tab.link} style={{ textDecoration: 'none' }} key={tab.value}>
-          <Tab
+          <TabElement
             style={{
               backgroundColor: `${
                 currTab == tab.number
@@ -44,7 +29,7 @@ const NawBar: FC<Props> = ({ setTab, getTab }: Props) => {
             }}
           >
             {tab.value}
-          </Tab>
+          </TabElement>
         </Link>
       ))}
     </TabsContainer>
@@ -58,7 +43,7 @@ const TabsContainer = styled.div`
   margin-top: 20px;
   margin-left: 15px;
 `
-const Tab = styled.div`
+const TabElement = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

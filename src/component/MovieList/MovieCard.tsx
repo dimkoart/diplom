@@ -3,18 +3,27 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../constants/colors'
 import { Film } from '../../types/FilmsType'
+import Icon from '../UI/Icon'
 interface Props {
   film: Film
+  icon?: string
 }
 
 const FilmCard: FC<Props & HTMLAttributes<HTMLDivElement>> = ({
   film,
+  icon,
   ...props
 }) => {
   return (
     <Link to={`/filmPage/${film.filmId}`}>
       <Card {...props} style={{ textDecoration: 'none' }}>
         <img style={{ borderRadius: 5 }} src={film.posterUrl} />
+        <Icon
+          icon={icon || ''}
+          size={30}
+          color={colors.red}
+          style={{ position: 'absolute' }}
+        />
       </Card>
     </Link>
   )

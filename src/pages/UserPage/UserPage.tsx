@@ -8,6 +8,7 @@ import Favorites from './Favorites'
 import Viewed from './Viewed'
 import WatchLater from './WatchLater'
 import Header from '../../component/header/Header'
+import { Tab } from '../../types/NavBar'
 
 const UserPage: FC = () => {
   const [nawBarState, setNawBar] = useState(1)
@@ -18,7 +19,23 @@ const UserPage: FC = () => {
   const getNawBarValue = (): number => {
     return nawBarState
   }
-
+  const tabs: Tab[] = [
+    {
+      value: 'Favorites',
+      number: 1,
+      link: 'favorites',
+    },
+    {
+      value: 'Viewed',
+      number: 2,
+      link: 'viewed',
+    },
+    {
+      value: 'Watch later',
+      number: 3,
+      link: 'watchLater',
+    },
+  ]
   return (
     <Container id='Container'>
       <Header active={'userPage'} />
@@ -26,7 +43,7 @@ const UserPage: FC = () => {
       <UserContent>
         <UserCard />
         <FilmList>
-          <NawBar setTab={setNawBarValue} getTab={getNawBarValue} />
+          <NawBar setTab={setNawBarValue} getTab={getNawBarValue} tabs={tabs} />
           <hr style={{ margin: '15px 0' }} />
           <Routes>
             <Route path='favorites' element={<Favorites />} />

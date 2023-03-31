@@ -92,6 +92,16 @@ const Header: FC<Props> = ({ active }) => {
             About
           </Links>
         </Item>
+        <Item>
+          <Links
+            href='/adminPage'
+            style={{
+              color: active === 'adminPage' ? colors.yellow : colors.white,
+            }}
+          >
+            AdminPage
+          </Links>
+        </Item>
       </NavBar>
       <Main
         onClick={() => {

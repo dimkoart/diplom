@@ -4,15 +4,19 @@ import Registration from './pages/Registration'
 import './App.css'
 import UserPage from './pages/UserPage/UserPage'
 import HomePage from './pages/HomePage/HomePage'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 import FilmsPage from './pages/FilmsPage'
+import AdminPage from './pages/AdminPage/AdminPage'
 
 function App() {
   return (
     <Routes>
       <Route path='/' element={<Navigate to='/userPage' replace />} />
       <Route path='/login' element={<Login />} />
+      <Route path='/adminPage/*' element={<AdminPage />} />
+      <Route
+        path='/adminPage/'
+        element={<Navigate to='/adminPage/users' replace />}
+      />
       <Route path='/home/*' element={<HomePage />} />
       <Route path='/home/' element={<Navigate to='/home/films' replace />} />
       <Route path='/registration' element={<Registration />} />

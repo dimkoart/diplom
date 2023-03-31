@@ -58,7 +58,7 @@ const UserCard: FC = () => {
 }
 const Header = styled.div`
   display: flex;
-  margin-top: 50px;
+  margin-top: 60px;
   padding: 20px;
   background-color: ${colors.loginForm};
   border-radius: 16px;
