@@ -6,13 +6,15 @@ interface InputProps {
   style?: CSSProperties
   text?: string
   type?: string | undefined
+  value?: string
   placeholder?: string | undefined
 }
 const Input: FC<InputProps & HTMLAttributes<HTMLInputElement>> = ({
   style,
+  value,
   ...props
 }) => {
-  return <StyledInput style={style} {...props}></StyledInput>
+  return <StyledInput style={style} {...props} value={value}></StyledInput>
 }
 
 const StyledInput = styled.input`

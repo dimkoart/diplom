@@ -11,8 +11,13 @@ import {
 } from '../styles/Authentification/AuthentificationComponents'
 import colors from '../constants/colors'
 import { FC } from 'react'
-
+import { useCustomDispatch, useCustomSelector } from '../hooks/store'
+import { UserLogin, fetchCurrentUser } from '../store/thunk/fetchCurrentUser'
+import { selectCurrentUserData } from '../store/selectors'
 const Login: FC = () => {
+  const dispatch = useCustomDispatch()
+  const { user, response } = useCustomSelector(selectCurrentUserData)
+  const log: UserLogin = { login: '2@gmail.com', password: 'samoseyko123' }
   return (
     <Container>
       <Form>
@@ -21,7 +26,7 @@ const Login: FC = () => {
         <StyledText style={{ alignSelf: 'start', marginTop: 15 }}>
           Email
         </StyledText>
-        <Input type='email' placeholder='Enter email' />
+        <Input type='email' placeholder='Enter email' value={user.token} />
         <StyledText style={{ alignSelf: 'start', marginTop: 25 }}>
           Password
         </StyledText>
@@ -44,7 +49,12 @@ const Login: FC = () => {
             </StyledText>
           </Link>
         </ForgetPasswordBlock>
-        <Button text='Sign In' />
+        <Button
+          text='Sign In'
+          onClick={() => {
+            dispatch(fetchCurrentUser(log))
+          }}
+        />
       </Form>
     </Container>
   )

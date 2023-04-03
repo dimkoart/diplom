@@ -10,7 +10,7 @@ import AdminPage from './pages/AdminPage/AdminPage'
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Navigate to='/userPage' replace />} />
+      <Route path='/' element={<Navigate to='/login' replace />} />
       <Route path='/login' element={<Login />} />
       <Route path='/adminPage/*' element={<AdminPage />} />
       <Route
