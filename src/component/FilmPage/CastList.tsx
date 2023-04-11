@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import colors from '../../constants/colors'
+
 import { Cast } from '../../types/FilmsType'
 interface Props {
   cast: Cast[]
@@ -20,9 +20,9 @@ const CastsList = styled.div`
   display: inline;
   width: 600px;
   justify-content: space-between;
-  background-color: ${colors.loginForm};
+  background-color: ${(props) => props.theme.loginForm};
   border-radius: 16px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
 `
 const CastCard = styled.div`
   display: inline-flex;
@@ -31,7 +31,7 @@ const CastCard = styled.div`
   width: 160px;
   height: 250px;
   border-radius: 4px;
-  background-color: ${colors.loginForm};
+  background-color: ${(props) => props.theme.loginForm};
   border-radius: 16px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -39,7 +39,7 @@ const CastCard = styled.div`
   cursor: pointer;
   &:hover {
     transform: scale(1.1);
-    box-shadow: 0px 0px 100px ${colors.black};
+    box-shadow: 0px 0px 100px ${(props) => props.theme.black};
   }
 `
 export default CastList

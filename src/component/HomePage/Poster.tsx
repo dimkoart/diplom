@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import colors from '../../constants/colors'
+import styled, { useTheme } from 'styled-components'
+
 import { Film } from '../../types/FilmsType'
 import ReviewList from '../Reviews/ReviewList'
 import Icon from '../UI/Icon'
@@ -19,7 +19,7 @@ const Poster: FC<Props> = ({ films }) => {
   //   const data = await FilmService.fetchComments(1, films.filmId)
   //   setComm(data.items)
   // }
-
+  const theme = useTheme()
   return (
     <PosterContainer>
       <Content style={{}}>
@@ -44,7 +44,7 @@ const Poster: FC<Props> = ({ films }) => {
         <StyledText
           style={{
             fontSize: 15,
-            color: colors.gray,
+            color: theme.gray,
           }}
         >
           September 24, 2014
@@ -69,7 +69,7 @@ const Poster: FC<Props> = ({ films }) => {
           style={{
             marginTop: 20,
             fontSize: 20,
-            color: colors.gray,
+            color: theme.gray,
           }}
         >
           {films.nameEn}+18
@@ -79,7 +79,7 @@ const Poster: FC<Props> = ({ films }) => {
             <Icon
               icon='tv'
               size={25}
-              color={colors.buttonLoginColor}
+              color={theme.buttonLoginColor}
               style={{ marginRight: 5 }}
             />
           }
@@ -114,7 +114,7 @@ const Poster: FC<Props> = ({ films }) => {
         </StyledText>
         <RatingBlock>
           <RatingComponent
-            activeColor={`${colors.yellow}`}
+            activeColor={`${theme.yellow}`}
             size={50}
             count={10}
           />
@@ -122,7 +122,7 @@ const Poster: FC<Props> = ({ films }) => {
             style={{
               marginTop: 10,
               fontSize: 50,
-              color: `${colors.gray}`,
+              color: `${theme.gray}`,
             }}
           >
             {films.rating}
@@ -130,7 +130,7 @@ const Poster: FC<Props> = ({ films }) => {
               style={{
                 marginTop: 10,
                 fontSize: 17,
-                color: `${colors.gray}`,
+                color: `${theme.gray}`,
               }}
             >
               {films.ratingVoteCount} ratings IMDb : 7.40 660 096 ratings
@@ -156,11 +156,11 @@ const Poster: FC<Props> = ({ films }) => {
 }
 const PosterContainer = styled.div`
   display: flex;
-  background-color: ${colors.posterBackGround};
+  background-color: ${(props) => props.theme.posterBackGround};
   height: 700px;
   width: 1370px;
   border-radius: 16px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
   padding: 20px;
   margin-top: 20px;
 `
@@ -170,7 +170,7 @@ const Image = styled.div`
   width: 300px;
   height: 450px;
   border-radius: 16px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -179,7 +179,7 @@ const Image = styled.div`
 const Video = styled.div`
   display: flex;
   z-index: 1;
-  background: ${colors.loginForm};
+  background: ${(props) => props.theme.loginForm};
   width: 300px;
   height: 200px;
 `
@@ -192,9 +192,9 @@ const Button = styled.button`
   align-items: center;
   font-weight: 500;
   font-size: 20px;
-  background-color: ${colors.gray};
+  background-color: ${(props) => props.theme.gray};
   border-radius: 20px;
-  color: ${colors.buttonText};
+  color: ${(props) => props.theme.buttonText};
   width: 180px;
   height: 45px;
   border: 0;
@@ -203,7 +203,7 @@ const Button = styled.button`
   margin-top: 30px;
   cursor: pointer;
   &:hover {
-    background-color: ${colors.posterButton};
+    background-color: ${(props) => props.theme.posterButton};
     transform: scale(1.1);
   }
   transition: 0.3s;
@@ -219,11 +219,11 @@ const Reviews = styled.div`
   border-radius: 16px;
   ::-webkit-scrollbar {
     width: 11px;
-    background-color: ${colors.scrollBar};
+    background-color: ${(props) => props.theme.scrollBar};
     border-radius: 16px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: ${colors.scrollThumb};
+    background-color: ${(props) => props.theme.scrollThumb};
     border-radius: 16px;
   }
 `

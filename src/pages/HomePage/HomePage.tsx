@@ -1,6 +1,4 @@
 import styled from 'styled-components'
-import Header from '../../component/header/Header'
-import colors from '../../constants/colors'
 import { useEffect, useState } from 'react'
 import { Film } from '../../types/FilmsType'
 import { FilmService } from '../../services/FilmService'
@@ -24,8 +22,7 @@ const HomePage = () => {
   }
 
   return (
-    <Container id='Container'>
-      <Header active={'home'} />
+    <Container>
       <Content>
         <Slider>
           <SwipedSlider films={films} />
@@ -67,9 +64,9 @@ const Slider = styled.div`
   display: inline-block;
   width: 1600px;
   border-radius: 16px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
   padding: 20px;
-  background-color: ${colors.loginForm};
+  background-color: ${(props) => props.theme.loginForm};
   margin-top: 60px;
 `
 

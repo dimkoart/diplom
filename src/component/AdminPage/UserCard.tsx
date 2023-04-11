@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
-import colors from '../../constants/colors'
+import styled, { useTheme } from 'styled-components'
+
 import Button from '../UI/Button'
 import { StyledText } from '../UI/Text'
 export type User = {
@@ -12,10 +12,11 @@ interface Props {
   user: User
 }
 const UserCard: FC<Props> = ({ user }: Props) => {
+  const theme=useTheme()
   return (
     <Card
       style={{
-        backgroundColor: user.status === 'UnBunned' ? colors.reviewGreen : '',
+        backgroundColor: user.status === 'UnBunned' ? theme.reviewGreen : '',
       }}
     >
       <img
@@ -70,7 +71,7 @@ const Card = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 75px;
-  background-color: ${colors.reviewNegative};
+  background-color: ${props=>props.theme.reviewNegative};
   border-radius: 16px;
   padding: 5px;
 `

@@ -3,16 +3,16 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Film } from '../../types/FilmsType'
 import FilmCard from '../MovieList/MovieCard'
 import { A11y, Navigation } from 'swiper'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import Icon from '../UI/Icon'
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/css'
-import colors from '../../constants/colors'
 
 interface Props {
   films: Film[]
 }
 const SwipedSlider: FC<Props> = ({ films }) => {
+  const theme = useTheme()
   return (
     <Swiper
       modules={[Navigation, A11y]}
@@ -32,10 +32,10 @@ const SwipedSlider: FC<Props> = ({ films }) => {
       ))}
       <ButtonsBlock>
         <Button className='swiper-prev'>
-          <Icon icon='arrow-left2' size={30} color={colors.iconSwiper} />
+          <Icon icon='arrow-left2' size={30} color={theme.iconSwiper} />
         </Button>
         <Button className='swiper-next'>
-          <Icon icon='arrow-right2' size={30} color={colors.iconSwiper} />
+          <Icon icon='arrow-right2' size={30} color={theme.iconSwiper} />
         </Button>
       </ButtonsBlock>
     </Swiper>
@@ -46,7 +46,8 @@ const Button = styled.button`
   z-index: 10;
   width: 35px;
   border: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: ${(props) => props.theme.swiperButton};
+  opacity: 90%;
   border-radius: 5px;
   cursor: pointer;
   :disabled {

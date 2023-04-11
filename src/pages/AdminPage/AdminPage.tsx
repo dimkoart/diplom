@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Route, Routes } from 'react-router'
 import styled from 'styled-components'
-import Header from '../../component/header/Header'
+
 import NawBar from '../../component/UserPage/NawBar'
-import colors from '../../constants/colors'
+
 import { Tab } from '../../types/NavBar'
 import FilmForm from './FilmForm'
 import Films from './Films'
@@ -38,7 +38,6 @@ const AdminPage = () => {
 
   return (
     <Container>
-      <Header active={'adminPage'} />
       <Content>
         <NawBar getTab={getNawBarValue} setTab={setNawBarValue} tabs={tabs} />
         <Routes>
@@ -87,11 +86,11 @@ const Content = styled.div`
   display: inline-block;
   margin-top: 60px;
   padding: 20px;
-  background-color: ${colors.loginForm};
+  background-color: ${(props) => props.theme.loginForm};
   border-radius: 16px;
   width: 1600px;
   height: 850px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
 `
 
 export default AdminPage

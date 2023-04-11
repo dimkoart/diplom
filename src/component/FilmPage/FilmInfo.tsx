@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
-import colors from '../../constants/colors'
+import styled, { useTheme } from 'styled-components'
+
 import { Cast, FilmId } from '../../types/FilmsType'
 import RatingComponent from '../HomePage/Rating'
 import { StyledText } from '../UI/Text'
@@ -10,6 +10,7 @@ interface Props {
   cast: Cast[]
 }
 const FilmInfo: FC<Props> = ({ films, cast }) => {
+  const theme = useTheme()
   return (
     <TopBlock>
       <InfoFilms>
@@ -31,7 +32,7 @@ const FilmInfo: FC<Props> = ({ films, cast }) => {
           style={{
             marginTop: 20,
             fontSize: 20,
-            color: colors.gray,
+            color: theme.gray,
           }}
         >
           {films.nameOriginal}+18
@@ -77,7 +78,7 @@ const FilmInfo: FC<Props> = ({ films, cast }) => {
         </CastBlock>
         <RatingBlock style={{}}>
           <RatingComponent
-            activeColor={`${colors.yellow}`}
+            activeColor={`${theme.yellow}`}
             size={50}
             count={10}
             value={films.ratingKinopoisk}
@@ -86,7 +87,7 @@ const FilmInfo: FC<Props> = ({ films, cast }) => {
             style={{
               marginTop: 10,
               fontSize: 50,
-              color: `${colors.gray}`,
+              color: `${theme.gray}`,
             }}
           >
             {films.ratingKinopoisk}
@@ -94,7 +95,7 @@ const FilmInfo: FC<Props> = ({ films, cast }) => {
               style={{
                 marginTop: 10,
                 fontSize: 17,
-                color: `${colors.gray}`,
+                color: `${theme.gray}`,
               }}
             >
               {films.ratingKinopoiskVoteCount} ratings IMDb : 7.40 660 096
@@ -121,8 +122,8 @@ const TopBlock = styled.div`
   display: flex;
   width: 1600px;
   padding: 20px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
-  background-color: ${colors.loginForm};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
+  background-color: ${(props) => props.theme.loginForm};
   border-radius: 16px;
 `
 const InfoFilms = styled.div`
@@ -141,7 +142,7 @@ const Image = styled.div`
   width: 300px;
   height: 650px;
   border-radius: 16px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;

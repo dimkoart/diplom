@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { UserToken } from '../../types/User/User'
 import { AxiosResponse } from 'axios'
-import { fetchCurrentUser } from '../thunk/fetchCurrentUser'
+import { registrationUser } from '../thunk/registrationUser'
 
 type Response = { status: number; message: string }
 type CurrentUser = { user: UserToken; isLoading: boolean; response: Response }
@@ -11,41 +11,33 @@ const initialState: CurrentUser = {
   response: { status: 0, message: '' },
 }
 
-export const currentUserSlice = createSlice({
-  name: 'current_user',
+export const registrationUserSlice = createSlice({
+  name: 'regUser',
   initialState,
-  reducers: {
-    logoutCurrentUser(state) {
-      state.user = { token: '' }
-      state.response = {
-        status: 0,
-        message: '',
-      }
-    },
-  },
+  reducers: {},
   extraReducers: {
-    [fetchCurrentUser.pending.type]: (state) => {
+    [registrationUser.pending.type]: (state) => {
       console.log('asdasd')
       state.isLoading = true
     },
-    [fetchCurrentUser.fulfilled.type]: (
+    [registrationUser.fulfilled.type]: (
       state,
       action: PayloadAction<AxiosResponse<UserToken>>
     ) => {
-      console.log(action.payload.data.token)
+      state.isLoading = false
       localStorage.setItem('token', action.payload.data.token)
       state.user.token = action.payload.data.token
-      state.isLoading = false
+
       state.response = {
         status: action.payload.status,
         message: action.payload.statusText,
       }
     },
-    [fetchCurrentUser.rejected.type]: (
+    [registrationUser.rejected.type]: (
       state,
       action: PayloadAction<AxiosResponse<UserToken>>
     ) => {
-      state.isLoading = true
+      state.isLoading = false
       state.response = {
         status: action.payload.status,
         message: action.payload.statusText,
@@ -53,4 +45,4 @@ export const currentUserSlice = createSlice({
     },
   },
 })
-export default currentUserSlice.reducer
+export default registrationUserSlice.reducer

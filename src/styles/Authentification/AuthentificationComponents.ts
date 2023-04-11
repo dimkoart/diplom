@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import colors from '../../constants/colors'
 
 export const Container = styled.div`
   position: fixed;
@@ -27,13 +26,13 @@ export const Form = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: ${colors.loginForm};
   border-radius: 16px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  background-color: ${(props) => props.theme.loginForm};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
 `
 
 export const Title = styled.div`
-  color: ${(props) => props.color || colors.white};
+  color: ${(props) => props.color || props.theme.textColors};
   margin-bottom: 20px;
   text-align: center;
   font-size: 36px;

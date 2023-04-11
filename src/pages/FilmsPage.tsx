@@ -3,7 +3,6 @@ import { useParams } from 'react-router'
 import styled from 'styled-components'
 import FilmInfo from '../component/FilmPage/FilmInfo'
 import FilmVideo from '../component/FilmPage/FilmVideo'
-import Header from '../component/header/Header'
 import { FilmService } from '../services/FilmService'
 import { Cast, Film, FilmId } from '../types/FilmsType'
 
@@ -33,7 +32,6 @@ const FilmsPage = () => {
   }
   return (
     <Container>
-      <Header active={'filmPage'} />
       <Content>
         <FilmInfo films={films} cast={cast} />
         <FilmVideo films={film} />

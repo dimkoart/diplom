@@ -1,18 +1,29 @@
-import React, { FC, useState } from 'react'
-import styled from 'styled-components'
+import React, { FC, useEffect, useState } from 'react'
+import styled, { useTheme } from 'styled-components'
 import NawBar from '../../component/UserPage/NawBar'
-import colors from '../../constants/colors'
 import UserCard from '../../component/UserPage/UserCard'
 import { Route, Routes } from 'react-router-dom'
 import Favorites from './Favorites'
 import Viewed from './Viewed'
 import WatchLater from './WatchLater'
-import Header from '../../component/header/Header'
 import { Tab } from '../../types/NavBar'
-
-const UserPage: FC = () => {
+import { useCustomDispatch, useCustomSelector } from '../../hooks/store'
+import { infoUser } from '../../store/selectors'
+import { fetchUserInfo } from '../../store/thunk/fetchUserInfo'
+interface Props {
+  toggleTheme: () => void
+  isDarkTheme: string
+}
+const UserPage: FC<Props> = ({ toggleTheme, isDarkTheme }) => {
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token != '' && token != null) dispatch(fetchUserInfo(token))
+    console.log(userInfo.curuser)
+  }, [])
+  const dispatch = useCustomDispatch()
+  const { userInfo, isLoading } = useCustomSelector(infoUser)
   const [nawBarState, setNawBar] = useState(1)
-
+  const theme = useTheme()
   const setNawBarValue = (value: number): void => {
     setNawBar(value)
   }
@@ -37,12 +48,17 @@ const UserPage: FC = () => {
     },
   ]
   return (
-    <Container id='Container'>
-      <Header active={'userPage'} />
-
+    <Container>
       <UserContent>
-        <UserCard />
-        <FilmList>
+        <UserCard
+          toggleTheme={toggleTheme}
+          isDarkTheme={isDarkTheme}
+          firstName={userInfo.curuser.firstName}
+          lastName={userInfo.curuser.lastName}
+          photo={userInfo.curuser.photo}
+          isLoading={isLoading}
+        />
+        <FilmList style={{ backgroundColor: theme.loginForm }}>
           <NawBar setTab={setNawBarValue} getTab={getNawBarValue} tabs={tabs} />
           <hr style={{ margin: '15px 0' }} />
           <Routes>
@@ -96,9 +112,9 @@ const FilmList = styled.div`
   padding: 20px;
   width: 750px;
   scrollbar-width: auto;
-  background-color: ${colors.loginForm};
+
   border-radius: 16px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
 `
 
 const UserContent = styled.div`

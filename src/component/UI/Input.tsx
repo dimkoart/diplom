@@ -1,6 +1,5 @@
 import React, { CSSProperties, FC, HTMLAttributes } from 'react'
 import styled from 'styled-components'
-import colors from '../../constants/colors'
 
 interface InputProps {
   style?: CSSProperties
@@ -27,14 +26,14 @@ const StyledInput = styled.input`
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
-  color: ${colors.white};
-  background: ${colors.inputColor};
+  color: ${(props) => props.theme.white};
+  background: ${(props) => props.theme.inputColor};
   border-radius: 15px;
   border: 0;
   box-sizing: border-box;
-  filter: drop-shadow(2px 5px 25px ${colors.dropShadow});
+  filter: drop-shadow(2px 5px 25px ${(props) => props.theme.dropShadow});
   ::placeholder {
-    color: ${colors.placeHolder};
+    color: ${(props) => props.theme.placeHolder};
     font-size: 20px;
   }
 `

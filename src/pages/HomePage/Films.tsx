@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Poster from '../../component/HomePage/Poster'
-import colors from '../../constants/colors'
+
 import { FilmService } from '../../services/FilmService'
 import { Film } from '../../types/FilmsType'
 
@@ -31,8 +31,8 @@ const FilmsList = styled.div`
   flex-direction: column;
   width: 1410px;
   border-radius: 16px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
   padding: 20px;
-  background-color: ${colors.loginForm};
+  background-color: ${(props) => props.theme.loginForm};
 `
 export default Films

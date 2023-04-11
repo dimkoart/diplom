@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import colors from '../../constants/colors'
+import styled, { useTheme } from 'styled-components'
+
 import { StyledText } from '../UI/Text'
 
 const SideBar = () => {
+  const theme = useTheme()
   return (
     <NavBarFilms>
       <StyledText style={{ fontSize: 23 }}>Navigation</StyledText>
@@ -12,7 +13,7 @@ const SideBar = () => {
       <StyledText style={{ fontSize: 25, textDecoration: 'underline' }}>
         <Link
           to='/home/films'
-          style={{ textDecoration: 'none', color: colors.white }}
+          style={{ textDecoration: 'none', color: theme.textColors }}
         >
           Films
         </Link>
@@ -20,7 +21,7 @@ const SideBar = () => {
       <StyledText style={{ fontSize: 25, textDecoration: 'underline' }}>
         <Link
           to='/home/series'
-          style={{ textDecoration: 'none', color: colors.white }}
+          style={{ textDecoration: 'none', color: theme.textColors }}
         >
           Series
         </Link>
@@ -28,7 +29,7 @@ const SideBar = () => {
       <StyledText style={{ fontSize: 25, textDecoration: 'underline' }}>
         <Link
           to='/home/anime'
-          style={{ textDecoration: 'none', color: colors.white }}
+          style={{ textDecoration: 'none', color: theme.textColors }}
         >
           Anime
         </Link>
@@ -44,8 +45,8 @@ const NavBarFilms = styled.div`
   width: 140px;
   height: 300px;
   border-radius: 16px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
   padding: 20px;
-  background-color: ${colors.loginForm};
+  background-color: ${(props) => props.theme.loginForm};
 `
 export default SideBar

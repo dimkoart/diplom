@@ -1,12 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
-import colors from '../../constants/colors'
+import styled, { useTheme } from 'styled-components'
 import ReviewList from '../Reviews/ReviewList'
 import Button from '../UI/Button'
 import Input from '../UI/Input'
 import { StyledText } from '../UI/Text'
 
 const Comments = () => {
+  const theme = useTheme()
   return (
     <Comment>
       <StyledText
@@ -36,7 +36,7 @@ const Comments = () => {
             marginTop: 15,
             width: 100,
             height: 49.48,
-            backgroundColor: colors.inputColor,
+            backgroundColor: theme.inputColor,
           }}
           text={'Send'}
         />
@@ -51,7 +51,7 @@ const Comment = styled.div`
   display: inline-block;
   margin-top: 25px;
   margin-left: 25px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
 
   border-radius: 16px;
   padding: 20px;
@@ -69,11 +69,11 @@ const Reviews = styled.div`
   margin-top: 75px;
   ::-webkit-scrollbar {
     width: 11px;
-    background-color: ${colors.scrollBar};
+    background-color: ${(props) => props.theme.scrollBar};
     border-radius: 16px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: ${colors.scrollThumb};
+    background-color: ${(props) => props.theme.scrollThumb};
     border-radius: 16px;
   }
 `

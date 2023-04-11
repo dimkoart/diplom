@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
-import colors from '../../constants/colors'
+import styled, { useTheme } from 'styled-components'
+
 import { Films } from '../../types/FilmsType'
 
 import Icon from './Icon'
@@ -11,6 +11,7 @@ interface Props {
   filmsCount: Films
 }
 const Pagination: FC<Props> = ({ changePage, filmsCount, getPage }) => {
+  const theme = useTheme()
   const pageNumbers: number[] = []
   const currPage = getPage()
 
@@ -36,7 +37,7 @@ const Pagination: FC<Props> = ({ changePage, filmsCount, getPage }) => {
           key={number}
           style={{
             boxShadow: `2px 5px 5px -3px ${
-              currPage == number ? `white` : colors.textShadow
+              currPage == number ? `white` : theme.textShadow
             }`,
           }}
           onClick={() => {
@@ -79,10 +80,10 @@ const Button = styled.button`
   border-radius: 10px;
   border: 0;
   background-color: #1d1c1c;
-  color: ${colors.paginationButtonColor};
+  color: ${(props) => props.theme.paginationButtonColor};
   cursor: pointer;
   :disabled {
-    background-color: ${colors.disabledButton};
+    background-color: ${(props) => props.theme.disabledButton};
   }
 `
 export default Pagination

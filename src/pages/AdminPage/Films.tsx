@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import MovieList from '../../component/MovieList/MovieList'
 import Input from '../../component/UI/Input'
 import { StyledText } from '../../component/UI/Text'
-import colors from '../../constants/colors'
+
 import { FilmService } from '../../services/FilmService'
 import { Film } from '../../types/FilmsType'
 interface Props {
@@ -54,11 +54,11 @@ const FIlmContainer = styled.div`
   align-items: center;
   margin-top: 10px;
   padding: 20px;
-  background-color: ${colors.loginForm};
+  background-color: ${(props) => props.theme.loginForm};
   border-radius: 16px;
   width: 1560px;
   height: 720px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
 `
 const FIlmList = styled.div`
   display: inline-block;
@@ -66,7 +66,7 @@ const FIlmList = styled.div`
   align-items: center;
   margin-top: 10px;
   padding: 20px;
-  background-color: ${colors.loginForm};
+  background-color: ${(props) => props.theme.loginForm};
   border-radius: 16px;
 
   height: 590px;

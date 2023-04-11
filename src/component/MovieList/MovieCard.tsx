@@ -1,7 +1,6 @@
 import React, { FC, HTMLAttributes } from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import colors from '../../constants/colors'
+import styled, { useTheme } from 'styled-components'
 import { Film } from '../../types/FilmsType'
 import Icon from '../UI/Icon'
 interface Props {
@@ -14,6 +13,7 @@ const FilmCard: FC<Props & HTMLAttributes<HTMLDivElement>> = ({
   icon,
   ...props
 }) => {
+  const theme = useTheme()
   return (
     <Link to={`/filmPage/${film.filmId}`}>
       <Card {...props} style={{ textDecoration: 'none' }}>
@@ -21,7 +21,7 @@ const FilmCard: FC<Props & HTMLAttributes<HTMLDivElement>> = ({
         <Icon
           icon={icon || ''}
           size={30}
-          color={colors.red}
+          color={theme.red}
           style={{ position: 'absolute' }}
         />
       </Card>
@@ -35,7 +35,7 @@ const Card = styled.div`
   width: 169px;
   height: 250px;
   border-radius: 4px;
-  background-color: ${colors.loginForm};
+
   border-radius: 16px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -43,7 +43,7 @@ const Card = styled.div`
   cursor: pointer;
   &:hover {
     transform: scale(1.1);
-    box-shadow: 0px 0px 100px ${colors.black};
+    box-shadow: 0px 0px 100px ${(props) => props.theme.black};
   }
   animation: 3s show ease;
   @keyframes show {

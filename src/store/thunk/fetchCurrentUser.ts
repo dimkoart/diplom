@@ -1,21 +1,19 @@
-import { AppDispatch } from '../store'
-import { currentUserSlice } from '../slice/currentUserSlice'
 import { UserService } from '../../services/UserInfo/UserInfo'
+import { createAsyncThunk } from '@reduxjs/toolkit'
 export type UserLogin = {
   login: string
   password: string
 }
-export const fetchCurrentUser =
-  (payload: UserLogin) => async (dispatch: AppDispatch) => {
-    const res = await UserService.login(payload.login, payload.password)
+
+export const fetchCurrentUser = createAsyncThunk(
+  'login',
+  async (payload: UserLogin, thunkAPI) => {
     try {
-      dispatch(currentUserSlice.actions.fetchCurrentUser)
-      if (res.status === 201) {
-        dispatch(currentUserSlice.actions.fetchCurrentUserSuccess(res))
-      } else {
-        dispatch(currentUserSlice.actions.fetchCurrentUserError(res))
-      }
-    } catch (error) {
-      console.log(error)
+      const response = await UserService.login(payload.login, payload.password)
+      
+      return response
+    } catch (e) {
+      return thunkAPI.rejectWithValue('не удалось залогиниться ')
     }
   }
+)

@@ -1,20 +1,28 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
-import styled from 'styled-components'
-import colors from '../../constants/colors'
+import React, { useEffect, useRef, useState } from 'react'
+import styled, { useTheme } from 'styled-components'
+
 import Icon from '../UI/Icon'
 import { StyledText } from '../UI/Text'
 import DropDown from './DropDown'
-interface Props {
-  active: string
-}
-const Header: FC<Props> = ({ active }) => {
+import { useCustomDispatch, useCustomSelector } from '../../hooks/store'
+import { infoUser } from '../../store/selectors'
+import { fetchUserInfo } from '../../store/thunk/fetchUserInfo'
+
+const Header = () => {
+  const theme = useTheme()
   const [scrollDirection, setScrollDirection] = useState(0)
   const [open, setOpen] = useState(false)
   const menuRef = useRef(null)
   let lastScrollY = 0
   let scrollY = 0
-
+  const { userInfo } = useCustomSelector(infoUser)
+  const dispatch = useCustomDispatch()
   useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token != '' && token != null) {
+      dispatch(fetchUserInfo(token))
+    }
+    console.log(userInfo)
     const container = document.getElementById('Container')
     if (container != null) {
       lastScrollY = container.scrollTop
@@ -42,7 +50,6 @@ const Header: FC<Props> = ({ active }) => {
     }
   }, [scrollDirection])
   window.addEventListener('click', (e) => {
-    console.log(e.target === menuRef.current)
     if (e.target != menuRef.current) {
       setOpen(false)
     }
@@ -50,12 +57,7 @@ const Header: FC<Props> = ({ active }) => {
   return (
     <HeaderContainer style={{ top: scrollDirection }}>
       <Logo>
-        <Icon
-          icon='tv'
-          size={30}
-          color={colors.gray}
-          style={{ zIndex: 1000 }}
-        />
+        <Icon icon='tv' size={30} color={theme.gray} style={{ zIndex: 1000 }} />
         <img
           style={{
             zIndex: 1000,
@@ -67,10 +69,7 @@ const Header: FC<Props> = ({ active }) => {
       </Logo>
       <NavBar>
         <Item>
-          <Links
-            href='/home'
-            style={{ color: active === 'home' ? colors.yellow : colors.white }}
-          >
+          <Links href='/home' style={{ color: theme.white }}>
             Home
           </Links>
         </Item>
@@ -78,17 +77,14 @@ const Header: FC<Props> = ({ active }) => {
           <Links
             href='/userPage'
             style={{
-              color: active === 'userPage' ? colors.yellow : colors.white,
+              color: theme.white,
             }}
           >
             Profile
           </Links>
         </Item>
         <Item>
-          <Links
-            href='#'
-            style={{ color: active === 'about' ? colors.yellow : colors.white }}
-          >
+          <Links href='#' style={{ color: theme.white }}>
             About
           </Links>
         </Item>
@@ -96,7 +92,7 @@ const Header: FC<Props> = ({ active }) => {
           <Links
             href='/adminPage'
             style={{
-              color: active === 'adminPage' ? colors.yellow : colors.white,
+              color: theme.white,
             }}
           >
             AdminPage
@@ -108,16 +104,25 @@ const Header: FC<Props> = ({ active }) => {
           setOpen(!open)
         }}
       >
-        <StyledText style={{ fontSize: 20, fontWeight: 500, marginRight: 10 }}>
-          Dima
+        <StyledText
+          style={{
+            fontSize: 20,
+            fontWeight: 500,
+            marginRight: 10,
+            color: theme.white,
+          }}
+        >
+          {userInfo.curuser.firstName}
         </StyledText>
         <img
           ref={menuRef}
-          src='https://lastfm.freetls.fastly.net/i/u/770x0/184fc92686e96c0f0b63e426c233bd59.jpg'
+          src={userInfo.curuser.photo}
           style={{
             borderRadius: 90,
             height: 50,
+            width: 50,
             cursor: 'pointer',
+            marginTop: 4,
           }}
         />
         {open && <DropDown />}
@@ -132,9 +137,10 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 15px 12%;
+
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.6),
@@ -177,7 +183,7 @@ const Links = styled.a`
   padding: 5px 0px;
   margin: 0px 30px;
   font-weight: 500;
-  color: ${colors.white};
+  color: ${(props) => props.theme.white};
   transition: all 0.5s ease;
   text-decoration: none;
   @media (max-width: 1280px) {

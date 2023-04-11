@@ -1,14 +1,31 @@
 import React from 'react'
-import styled from 'styled-components'
-import colors from '../../constants/colors'
+import styled, { useTheme } from 'styled-components'
+
 import { StyledText } from '../UI/Text'
+import Input from '../UI/Input'
 
 const SortedBlock = () => {
+  const theme = useTheme()
   return (
     <Sorted>
-      <StyledText>Sort by:</StyledText>
-      <StyledText style={{ fontSize: 18 }}>Year</StyledText>
-      <Select>
+      <StyledText style={{ fontSize: 20, marginLeft: 30, marginTop: 8 }}>
+        Enter Film
+      </StyledText>
+      <Input
+        placeholder='Film Name'
+        style={{
+          height: 40,
+          marginLeft: 10,
+          width: 200,
+          backgroundColor: theme.white,
+          marginRight: 50,
+          color: theme.black,
+          fontSize: 20,
+        }}
+      />
+      <StyledText style={{ marginTop: 8 }}>Sort by:</StyledText>
+      <StyledText style={{ fontSize: 18, marginTop: 8 }}>Year</StyledText>
+      <Select style={{ marginRight: 50 }}>
         <option value='' hidden>
           Year
         </option>
@@ -17,7 +34,7 @@ const SortedBlock = () => {
         <option value='2003'>2003</option>
         <option value='2004'>2004</option>
       </Select>
-      <StyledText style={{ fontSize: 18 }}> Сountry</StyledText>
+      <StyledText style={{ fontSize: 18, marginTop: 8 }}> Сountry</StyledText>
       <Select style={{ width: 80 }}>
         <option value='' hidden>
           Сountry
@@ -34,19 +51,19 @@ const Sorted = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  background-color: ${colors.loginForm};
+  background-color: ${(props) => props.theme.loginForm};
   height: 25px;
-  width: 450px;
+  width: 900px;
   border-radius: 16px 16px 0px 0px;
   margin-top: 30px;
-  right: -1100px;
+  right: -650px;
   padding: 20px;
 `
 const Select = styled.select`
   width: 60px;
   height: 35px;
-  background: ${colors.white};
-  color: ${colors.gray};
+  background: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.gray};
   padding-left: 5px;
   font-size: 14px;
   border: none;
@@ -54,8 +71,8 @@ const Select = styled.select`
   margin-bottom: 5px;
   border-radius: 10px;
   option {
-    color: ${colors.black};
-    background: ${colors.white};
+    color: ${(props) => props.theme.black};
+    background: ${(props) => props.theme.white};
   }
 `
 export default SortedBlock

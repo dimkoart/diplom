@@ -1,15 +1,31 @@
-import React, { FC } from 'react'
-import styled from 'styled-components'
-import colors from '../../constants/colors'
+import React, { FC, useState } from 'react'
+import styled, { useTheme } from 'styled-components'
+
 import Button from '../UI/Button'
 import Input from '../UI/Input'
 import { StyledText } from '../UI/Text'
 import Icon from '../UI/Icon'
+import { UserService } from '../../services/UserInfo/UserInfo'
 interface Props {
   active: boolean
   onClose: () => void
 }
 const EditWindow: FC<Props> = ({ active, onClose }) => {
+  const theme = useTheme()
+
+  const [file, setFile] = useState()
+  const handleChange = (event: any) => {
+    console.log(event.target.files[0])
+    setFile(event.target.files[0])
+  }
+  const editPhoto = async () => {
+    console.log(file)
+    const token = localStorage.getItem('token')
+    if (token != '' && token != null) {
+      const response = await UserService.updateUser(token, file)
+      console.log(response)
+    }
+  }
   if (!active) {
     return null
   }
@@ -30,7 +46,7 @@ const EditWindow: FC<Props> = ({ active, onClose }) => {
             onClose()
           }}
         >
-          <Icon icon='cross' size={25} color={`${colors.buttonLoginColor}`} />
+          <Icon icon='cross' size={25} color={`${theme.buttonLoginColor}`} />
         </CloseWIndow>
 
         <Title>Edit Form</Title>
@@ -46,38 +62,67 @@ const EditWindow: FC<Props> = ({ active, onClose }) => {
           placeholder='Enter Surname'
           style={{ marginBottom: 10 }}
         />
-        <StyledText style={{ marginTop: 25, alignSelf: 'start', fontSize: 25 }}>
-          Write your password
-        </StyledText>
-        <Input
-          type='password'
-          placeholder=' Write your password'
-          style={{ marginBottom: 10 }}
-        />
-        <StyledText style={{ marginTop: 25, alignSelf: 'start', fontSize: 25 }}>
-          New Password
-        </StyledText>
-        <Input
-          type='text'
-          placeholder=' New Password'
-          style={{ marginBottom: 10 }}
-        />
+        <label
+          style={{
+            width: 400,
+            height: 50,
+            borderRadius: 16,
+            display: 'inline-block',
+            cursor: 'pointer',
+            backgroundColor: 'gray',
+          }}
+        >
+          <StyledText
+            style={{
+              color: theme.placeHolder,
+              marginLeft: 100,
+              marginTop: 15,
+            }}
+          >
+            Добавить файл
+            {
+              <Icon
+                icon='box-add'
+                size={25}
+                color={theme.black}
+                style={{ marginLeft: 5 }}
+              />
+            }
+          </StyledText>
+
+          <Input
+            style={{
+              opacity: 0,
+              position: 'relative',
+              outline: 0,
+              top: -10,
+              pointerEvents: 'none',
+              userSelect: 'none',
+              height: 20,
+            }}
+            type='file'
+            onChange={handleChange}
+          />
+        </label>
         <Button
           text='Submit'
           style={{ width: 150, height: 50, marginTop: 15, fontWeight: 900 }}
+          onClick={async () => {
+            await editPhoto()
+          }}
         />
       </Form>
     </Blur>
   )
 }
-const Form = styled.div`
+const Form = styled.form`
   display: flex;
   position: fixed;
   align-self: center;
   align-items: center;
   flex-direction: column;
   padding: 20px;
-  background-color: ${colors.loginForm};
+  background-color: ${(props) => props.theme.loginForm};
   border-radius: 16px;
   box-shadow: 2px 5px 25px -3px black;
   animation: 0.5s show ease;
@@ -104,7 +149,7 @@ const Blur = styled.div`
   backdrop-filter: blur(5px);
 `
 const Title = styled.div`
-  color: ${(props) => props.color || colors.white};
+  color: ${(props) => props.color || props.theme.textColors};
   margin-bottom: 20px;
   text-align: center;
   font-size: 36px;

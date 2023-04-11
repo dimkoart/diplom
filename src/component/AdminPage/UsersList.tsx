@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import colors from '../../constants/colors'
+
 import Input from '../UI/Input'
 import { StyledText } from '../UI/Text'
 import UserCard, { User } from './UserCard'
@@ -27,11 +27,11 @@ const UsersContainer = styled.div`
   align-items: center;
   margin-top: 10px;
   padding: 20px;
-  background-color: ${colors.loginForm};
+  background-color: ${(props) => props.theme.loginForm};
   border-radius: 16px;
   width: 1560px;
   height: 720px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
 `
 
 export default UsersList

@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
-import colors from '../../constants/colors'
+import styled, { useTheme } from 'styled-components'
 import Icon from '../UI/Icon'
 import { StyledText } from '../UI/Text'
 export interface ReviewType {
@@ -9,11 +8,12 @@ export interface ReviewType {
   text: string
 }
 const ReviewCard: FC<ReviewType> = ({ negative, userName, text }) => {
+  const theme = useTheme()
   return (
     <Card
       style={{
         backgroundColor:
-          negative === true ? colors.reviewNegative : colors.reviewpositive,
+          negative === true ? theme.reviewNegative : theme.reviewpositive,
       }}
     >
       <Header>
@@ -33,7 +33,7 @@ const ReviewCard: FC<ReviewType> = ({ negative, userName, text }) => {
               fontSize: 16,
               fontWeight: 500,
               marginTop: 10,
-              color: `${colors.black}`,
+              color: `${theme.black}`,
             }}
           >
             {userName}
@@ -43,7 +43,7 @@ const ReviewCard: FC<ReviewType> = ({ negative, userName, text }) => {
               fontSize: 12,
 
               marginTop: 5,
-              color: `${colors.black}`,
+              color: `${theme.black}`,
             }}
           >
             {'107 reviews'}
@@ -55,7 +55,7 @@ const ReviewCard: FC<ReviewType> = ({ negative, userName, text }) => {
               fontSize: 15,
 
               marginTop: 5,
-              color: `${colors.gray}`,
+              color: `${theme.gray}`,
             }}
           >
             {'January 14, 2015 at 08:15 pm'}
@@ -65,7 +65,7 @@ const ReviewCard: FC<ReviewType> = ({ negative, userName, text }) => {
               fontSize: 15,
               marginLeft: 140,
               marginTop: 5,
-              color: `${colors.gray}`,
+              color: `${theme.gray}`,
             }}
           >
             {'direct link'}
@@ -80,7 +80,7 @@ const ReviewCard: FC<ReviewType> = ({ negative, userName, text }) => {
             fontWeight: 600,
             marginLeft: 10,
             marginTop: 10,
-            color: `${colors.black}`,
+            color: `${theme.black}`,
           }}
         >
           {'Wick end'}
@@ -89,7 +89,7 @@ const ReviewCard: FC<ReviewType> = ({ negative, userName, text }) => {
           style={{
             fontSize: 14,
             marginLeft: 10,
-            color: `${colors.black}`,
+            color: `${theme.black}`,
           }}
         >
           {text}
@@ -99,7 +99,7 @@ const ReviewCard: FC<ReviewType> = ({ negative, userName, text }) => {
             style={{
               fontSize: 13,
               marginTop: 20,
-              color: `${colors.gray}`,
+              color: `${theme.gray}`,
               marginBottom: 15,
             }}
           >
@@ -107,7 +107,7 @@ const ReviewCard: FC<ReviewType> = ({ negative, userName, text }) => {
               <Icon
                 icon='bubble'
                 size={20}
-                color={colors.gray}
+                color={theme.gray}
                 style={{ marginRight: 5, marginLeft: 5 }}
               />
             }
@@ -126,7 +126,7 @@ const ReviewCard: FC<ReviewType> = ({ negative, userName, text }) => {
             <Icon
               icon='sad2'
               size={16}
-              color={colors.red}
+              color={theme.red}
               style={{ marginRight: 5, marginLeft: 5 }}
             />
             No 69
@@ -142,9 +142,9 @@ const Card = styled.div`
   margin-left: 15px;
   width: 462px;
   border-radius: 10px;
-  background-color: ${colors.reviewNegative};
+  background-color: ${(props) => props.theme.reviewNegative};
   border-radius: 16px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -168,16 +168,16 @@ const Button = styled.button`
   align-items: center;
   font-weight: 500;
   font-size: 13px;
-  background-color: ${colors.gray};
+  background-color: ${(props) => props.theme.gray};
   border-radius: 20px;
-  color: ${colors.buttonText};
+  color: ${(props) => props.theme.buttonText};
   width: 114px;
   height: 30px;
   border: 0;
   font-family: 'Poppins';
   font-style: normal;
   &:hover {
-    background-color: ${colors.posterButton};
+    background-color: ${(props) => props.theme.posterButton};
   }
   transition: 0.3s;
 `

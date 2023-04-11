@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import colors from '../../constants/colors'
 
 export const StyledText = styled.text`
   display: flex;
@@ -13,6 +12,6 @@ export const StyledText = styled.text`
   font-size: 20px;
   font-weight: 400;
   line-height: 18px;
-  color: ${colors.textColors};
-  text-shadow: 0px 4px 4px ${colors.textShadow};
+  color: ${(props) => props.theme.textColors};
+  text-shadow: 0px 4px 4px ${(props) => props.theme.textShadow};
 `

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import colors from '../../constants/colors'
+
 import { Film } from '../../types/FilmsType'
 import SwipedSlider from '../HomePage/SwiperSlider'
 import { StyledText } from '../UI/Text'
@@ -40,8 +40,8 @@ const BottomBlock = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 25px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
-  background-color: ${colors.loginForm};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
+  background-color: ${(props) => props.theme.loginForm};
   border-radius: 16px;
   padding: 20px;
 `

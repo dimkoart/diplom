@@ -1,6 +1,5 @@
 import React, { CSSProperties, FC, HTMLAttributes } from 'react'
 import styled from 'styled-components'
-import colors from '../../constants/colors'
 
 interface ButtonProps {
   text?: string
@@ -29,13 +28,13 @@ const StyledButton = styled.button`
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
-  color: ${colors.buttonText};
-  background: ${colors.buttonLoginColor};
+  color: ${(props) => props.theme.buttonText};
+  background: ${(props) => props.theme.buttonLoginColor};
   border: 0;
   border-radius: 15px;
   cursor: pointer;
   &:hover {
-    background-color: ${colors.buttonLoginHoverColor};
+    background-color: ${(props) => props.theme.buttonLoginHoverColor};
   }
 `
 

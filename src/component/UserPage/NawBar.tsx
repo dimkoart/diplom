@@ -1,16 +1,17 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import colors from '../../constants/colors'
+import styled, { useTheme } from 'styled-components'
+
 import { Tab } from '../../types/NavBar'
+
 interface Props {
   setTab: (value: number) => void
   getTab: () => number
   tabs: Tab[]
 }
-const NawBar: FC<Props> = ({ setTab, getTab, tabs }: Props) => {
+const NawBar: FC<Props> = ({ setTab, getTab, tabs }) => {
   const currTab = getTab()
-
+  const theme = useTheme()
   return (
     <TabsContainer>
       {tabs.map((tab) => (
@@ -19,10 +20,10 @@ const NawBar: FC<Props> = ({ setTab, getTab, tabs }: Props) => {
             style={{
               backgroundColor: `${
                 currTab == tab.number
-                  ? colors.buttonLoginColor
-                  : colors.tabsBackColor
+                  ? theme.buttonLoginColor
+                  : theme.tabsBackColor
               }`,
-              color: `${currTab == tab.number ? colors.black : colors.white}`,
+              color: `${currTab == tab.number ? theme.black : theme.white}`,
             }}
             onClick={() => {
               setTab(tab.number)
@@ -50,10 +51,10 @@ const TabElement = styled.div`
   margin-right: 15px;
   padding: 9px 20px;
   font-size: 18px;
-  box-shadow: 2px 5px 25px -3px ${colors.textShadow};
+  box-shadow: 2px 5px 25px -3px ${(props) => props.theme.textShadow};
   border-radius: 10px;
-  background-color: ${colors.tabsBackColor};
-  color: ${colors.paginationButtonColor};
+  background-color: ${(props) => props.theme.tabsBackColor};
+  color: ${(props) => props.theme.paginationButtonColor};
   cursor: pointer;
 `
 
